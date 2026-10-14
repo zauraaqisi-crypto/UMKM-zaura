@@ -1,0 +1,774 @@
+/* ==================================
+   RISOL MAYO ZAURA
+   TEMA BIRU
+================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+    color: #17365d;
+    background-color: #f0f7ff;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ANIMASI */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(30, 100, 190, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(30, 100, 190, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(30, 100, 190, 0);
+    }
+}
+
+/* FADE IN */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out,
+                transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* TOP BAR */
+
+.top-bar {
+    background: #ffffff;
+    border-bottom: 1px solid #d6e6f7;
+    padding: 8px 0;
+    font-size: 13px;
+    color: #527399;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.top-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-top a {
+    color: #527399;
+    margin-left: 10px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.social-top a:hover {
+    color: #1677d2;
+    transform: scale(1.2);
+}
+
+/* NAVBAR */
+
+.navbar {
+    background: #ffffff;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    animation: fadeIn 1s ease-out;
+    box-shadow: 0 2px 10px rgba(23, 54, 93, 0.05);
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #15549a;
+    text-decoration: none;
+    line-height: 1;
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo span {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    display: block;
+    margin-top: 5px;
+    color: #438bd1;
+}
+
+/* MENU NAVIGASI */
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: #17365d;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-menu li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #1677d2;
+    transition: width 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #1677d2;
+}
+
+.nav-menu li a:hover::after {
+    width: 100%;
+}
+
+/* TOMBOL PESAN */
+
+.btn-order {
+    background: #1769aa;
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    animation: pulse 2s infinite;
+}
+
+.btn-order:hover {
+    background: #0c4a80;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(23, 105, 170, 0.3);
+    animation: none;
+}
+
+/* MENU TOGGLE HP */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #15549a;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* HERO */
+
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    background:
+        linear-gradient(
+            rgba(230, 243, 255, 0.78),
+            rgba(230, 243, 255, 0.85)
+        ),
+        url('../assets/images/hero-bg.jpg')
+        no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(230, 243, 255, 0.15);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.welcome {
+    font-size: 20px;
+    font-style: italic;
+    color: #1769aa;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: #123d70;
+    line-height: 1.2;
+    margin-bottom: 15px;
+}
+
+.sub-text {
+    font-size: 16px;
+    color: #527399;
+    margin-bottom: 35px;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* TOMBOL UTAMA */
+
+.btn-primary {
+    display: inline-block;
+    background: #1769aa;
+    color: #ffffff;
+    padding: 12px 32px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.btn-primary:hover {
+    background: #0c4a80;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(23, 105, 170, 0.25);
+}
+
+/* SECTION */
+
+section {
+    padding: 70px 0;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.icon {
+    font-size: 24px;
+    display: inline-block;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.section-heading h2 {
+    font-size: 28px;
+    color: #123d70;
+    margin-bottom: 10px;
+}
+
+.section-heading p {
+    color: #527399;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 15px;
+}
+
+/* KEUNGGULAN PRODUK */
+
+.features {
+    background: #ffffff;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature-card {
+    text-align: center;
+    transition: transform 0.4s ease,
+                box-shadow 0.4s ease;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(23, 54, 93, 0.08);
+}
+
+.feature-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+}
+
+.feature-card:hover img {
+    transform: scale(1.03);
+}
+
+.feature-card h3 {
+    font-size: 18px;
+    color: #123d70;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.feature-card:hover h3 {
+    color: #1677d2;
+}
+
+.feature-card p {
+    color: #527399;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* TOMBOL DETAIL */
+
+.btn-learn {
+    color: #1769aa;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid #1769aa;
+    padding-bottom: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-learn:hover {
+    color: #0c4a80;
+    border-color: #0c4a80;
+    letter-spacing: 1px;
+}
+
+/* MENU RISOL MAYO */
+
+.menu-section {
+    background: #f0f7ff;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.menu-item {
+    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e0edfb;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.menu-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(23, 54, 93, 0.12);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    transition: transform 0.5s ease;
+}
+
+.menu-item:hover img {
+    transform: scale(1.05);
+}
+
+.menu-item h3 {
+    font-size: 16px;
+    color: #123d70;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.menu-item:hover h3 {
+    color: #1677d2;
+}
+
+.menu-item p {
+    color: #527399;
+    font-size: 13px;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 15px;
+    color: #1769aa;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.menu-item:hover .price {
+    transform: scale(1.1);
+}
+
+/* LABEL PRODUK */
+
+.badge {
+    display: inline-block;
+    background: #e0efff;
+    color: #15549a;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.badge-hot {
+    background: #1769aa;
+    color: #ffffff;
+}
+
+.menu-button {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* BAGIAN KUNJUNGAN */
+
+.visit {
+    background: #ffffff;
+}
+
+.visit .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.visit-text h2 {
+    font-size: 28px;
+    color: #123d70;
+    margin-bottom: 20px;
+}
+
+.visit-text p {
+    color: #527399;
+    margin-bottom: 25px;
+    font-size: 15px;
+}
+
+.visit-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.visit-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 6px;
+    transition: all 0.4s ease;
+}
+
+.visit-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(23, 54, 93, 0.15);
+}
+
+/* FOOTER */
+
+.footer {
+    background: #e6f2ff;
+    border-top: 1px solid #d6e6f7;
+    padding: 50px 0 25px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    font-size: 17px;
+    color: #123d70;
+    margin-bottom: 15px;
+}
+
+.footer-col p {
+    color: #527399;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+/* FORM BERLANGGANAN */
+
+.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.subscribe-form input {
+    padding: 10px 14px;
+    border: 1px solid #c7dcef;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+.subscribe-form input:focus {
+    outline: none;
+    border-color: #1769aa;
+}
+
+.subscribe-form button {
+    background: #1769aa;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.subscribe-form button:hover {
+    background: #0c4a80;
+    transform: translateY(-2px);
+}
+
+/* SOSIAL MEDIA */
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    width: 34px;
+    height: 34px;
+    background: #d5e8fa;
+    color: #1769aa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.social-links a:hover {
+    background: #1769aa;
+    color: #ffffff;
+    transform: translateY(-4px);
+}
+
+/* FOOTER BAWAH */
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid #c7dcef;
+    color: #527399;
+    font-size: 13px;
+}
+
+.footer-links {
+    margin-top: 10px;
+}
+
+.footer-links a {
+    color: #527399;
+    margin: 0 8px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #1769aa;
+}
+
+/* RESPONSIVE TABLET */
+
+@media (max-width: 1024px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+/* RESPONSIVE HP */
+
+@media (max-width: 768px) {
+    .nav-menu,
+    .btn-order {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar .container {
+        position: relative;
+    }
+
+    .nav-menu.active {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        background: #ffffff;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+        display: flex;
+        gap: 15px;
+    }
+
+    .features-grid,
+    .visit .container,
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    .top-bar .container {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+}
+
+/* RESPONSIVE HP KECIL */
+
+@media (max-width: 480px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .visit-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 26px;
+    }
+
+    .section-heading h2 {
+        font-size: 22px;
+    }
+
+    .logo {
+        font-size: 22px;
+    }
+}
